@@ -1,0 +1,19 @@
+{{! The big featured header on the homepage, with the site logo and description }}
+<header id="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="vertical">
+        <div id="site-head-content" class="inner">
+            {{#if @blog.logo}}<a id="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" style="width: 100px;"/></a>{{/if}}
+            <h1 class="blog-title"><a href="{{@blog.url}}">{{@blog.title}}</a></h1>
+            <h2 class="blog-description">{{@blog.description}}</h2>
+
+            <section class="icons-follow">
+                <ul>
+                            <li><a class="icon-twitter-follow" href="https://twitter.com/k_kemple" target="_blank">Twitter</a></li>
+	               <li><a class="icon-twitter-follow" href="https://github.com/kkemple" target="_blank">GitHub</a></li>
+	               <li><a class="icon-google-plus-follow" href="https://coderbits.com/kkemple" target="_blank">CoderBits</a></li>
+            	</ul>
+            </section>
+
+        </div>
+    </div>
+</header>

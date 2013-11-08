@@ -1,0 +1,110 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+<main class="content" role="main">
+
+    {{! Each post has the blog logo at the top, with a link back to the home page }}
+    <header class="post-header" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+        <section class="inner">
+        <a id="blog-logo" href="{{@blog.url}}">
+            {{#if @blog.logo}}
+                <img src="{{@blog.logo}}" alt="Blog Logo" style="width: 100px;"/>
+            {{else}}
+                {{@blog.title}}
+            {{/if}}
+        </a>
+        </section>
+    </header>
+
+
+    <article class="{{post_class}}">
+
+        {{! Everything inside the #post tags pulls data from the post }}
+        {{#post}}
+
+        {{! Everything below outputs content of the the post which has been published }}
+
+        <span class="post-meta">
+            <span class="post-date">
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM"}}</time>
+                <span class="post-date-year">{{date format="YYYY"}}</span>
+            </span>
+        </span>
+
+        <h1 class="post-title">{{{title}}}</h1>
+
+        {{#if tags}}
+        <span class="post-tags">
+            {{tags separator=" / "}}
+        </span>
+        {{/if}}
+
+        <section class="post-content">
+            {{content}}
+        </section>
+
+        <footer class="post-footer">
+
+            {{#if author}}
+            <section class="author">
+
+                <span class="author-picture">
+                    <a href="{{author.website}}" target="_blank"><img src="{{author.image}}" alt="{{author.name}}" /></a>
+                </span>
+
+                <span class="author-content">
+                    <h4><a href="{{author.website}}" target="_blank">{{author.name}}</a></h4>
+                    <p class="author-bio">{{author.bio}}</p>
+                    <span class="author-email"><a href="mailto:{{author.email}}"></a></span><!-- <br /> -->
+                    <!--{{#if author.website}}
+                    <span class="author-website"><a href="{{author.website}}" target="_blank">{{author.website}}</a></span>
+                    {{/if}}-->
+                </span> <!-- /end .author-content -->
+
+            </section>
+            {{/if}}
+
+            <section class="share">
+                <h4 class="share-post-title">Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text={{title}}&amp;url={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+        {{/post}}
+
+        <!-- DISQUS BEGINS -->
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_shortname = 'kurtiskemplecom'; // required: replace example with your forum shortname
+            var disqus_identifier = '{{post.id}}'; // make sure to use the post.id as an identifier, otherwise disqus will use the pages url per default, which might be problematic...
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <!-- DISQUS ENDS -->
+
+    </article>
+
+</main>
+
+{{> footer}}
