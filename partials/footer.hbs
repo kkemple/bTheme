@@ -5,9 +5,22 @@
 		<a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
 		<section class="copyright">All content copyright <a href="/">{{@blog.title}}</a> &copy; {{date format='YYYY'}} &bull; All rights reserved.</section>
 		<section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org" target="_blank">Ghost</a></section>
-    
+
     </div> <!-- /end .inner -->
 
 </footer> <!-- /end .site-footer -->
+
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-42606120-1']);
+	_gaq.push(['_setDomainName', 'kurtiskemple.com']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	})();
+</script>
 
 <p id="back-top"><a href="#top"><span></span></a></p>
