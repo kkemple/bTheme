@@ -14,9 +14,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {{! Styles'n'Scripts }}
+    <link rel="stylesheet" type="text/css" href="/assets/prettify/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/prettify/sons-of-obsidian.css" />
     <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700' rel='stylesheet' type='text/css'>
     <script type='text/javascript' src='/assets/js/all.min.js'></script>
+    <script type='text/javascript' src='/assets/prettify/prettify.js'></script>
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
@@ -33,6 +36,13 @@
     {{! The main JavaScript file for the theme }}
     <script type="text/javascript" src="/assets/js/index.js"></script>
     <script type="text/javascript">responsive_iframes();</script>
-
+    <script>
+        (function ( $ ) {
+            $(function () {
+                $( 'pre' ).addClass( 'prettyprint linenuns');
+                prettyPrint();
+            });
+        })( jQuery );
+    </script>
 </body>
 </html>
